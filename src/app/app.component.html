@@ -1,4 +1,9 @@
-<header class="header">
-    <app-side-nav (onToggleSideNav)="onToggleSideNav($event)"></app-side-nav>
-</header>
-<app-main [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-main>
+<app-side-nav (onToggleSideNav)="onToggleSideNav($event)"></app-side-nav>
+<app-header
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth"
+></app-header>
+<app-main
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth"
+></app-main>

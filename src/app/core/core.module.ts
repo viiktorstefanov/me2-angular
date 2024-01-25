@@ -5,19 +5,19 @@ import { NotFound404Component } from './not-found-404/not-found-404.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
-import { FooterComponent } from './footer/footer.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SearchComponent } from './search/search.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NotFound404Component,
     SideNavComponent,
-    FooterComponent,
     MainComponent,
     ContactsComponent,
     SearchComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +27,7 @@ import { SearchComponent } from './search/search.component';
     HomeComponent,
     MainComponent,
     SideNavComponent,
+    HeaderComponent
   ]
 })
 export class CoreModule { }
