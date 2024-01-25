@@ -1,0 +1,24 @@
+<div class="side-nav" [ngClass]="collapsed ? 'side-nav-collapsed' : ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">M2</button>
+    <div class="logo-text" *ngIf="collapsed">Me2</div>
+    <button class="btn-close" *ngIf="collapsed" (click)="closeSideNav()">
+      <i class="fal fa-times close-icon"></i>
+    </button>
+  </div>
+  <ul class="side-nav-nav">
+    <li class="sidenav-nav-item" *ngFor="let data of navData">
+      <a
+        class="side-nav-link"
+        [routerLink]="[data.routerLink]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <i class="side-nav-icon" [class]="data.icon"></i>
+        <span class="side-nav-link-text" *ngIf="collapsed">{{
+          data.label
+        }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
