@@ -5,8 +5,23 @@ export const navBarData = [
         label: 'Home'
     },
     {
-        routerLink: 'not-found',
-        icon: 'fal fa-box-open',
-        label: 'NotFound'
-    }
+        routerLink: 'search',
+        icon: 'fas fa-search',
+        label: 'Search'
+    },
+    {
+        routerLink: 'places',
+        icon: 'fas fa-map-marker-alt',
+        label: 'Places'
+    },
+    {
+        routerLink: 'experiences',
+        icon: 'fas fa-child',
+        label: 'Experiences'
+    },
+    {
+        routerLink: 'contacts',
+        icon: 'fas fa-envelope',
+        label: 'Contacts'
+    },
 ]

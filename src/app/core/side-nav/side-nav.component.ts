@@ -1,7 +1,6 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navBarData } from './nav-data';
 import { sideBarNav } from '../types/sideBarNav';
-import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-side-nav',
@@ -17,9 +16,9 @@ export class SideNavComponent implements OnInit{
   navData = navBarData;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event : unknown) {
+  onResize(event : Event) {
     this.screenWidth = window.innerWidth;
-
+    
     if(this.screenWidth <= 768) {
       this.collapsed = false;
       this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth});
