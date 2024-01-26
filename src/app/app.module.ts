@@ -10,12 +10,14 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExperiencesModule } from './experiences/experiences.module';
 import { PlacesModule } from './places/places.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AuthModule,
     ExperiencesModule,
     PlacesModule,
     BrowserModule,

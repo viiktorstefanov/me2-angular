@@ -41,11 +41,12 @@
                         margin-left: 5px;
                         outline: 0;
                         color: #495057;
+                        /* color: #263238; */
                     }
 
                     .head-menu-item-btn:hover,
                     .head-menu-item-btn:focus {
-                        background: #eff2f3;
+                        /* background: #eff2f3; */
                         .menu-icon {
                             color: #699dfa;
                         }
@@ -54,7 +55,12 @@
             }
 
             .head-user-avatar-container {
-                margin-left: 20px;
+                margin-left: 60px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
 
                 .head-user-avatar {
                     position: relative;
@@ -80,4 +86,20 @@
 .head-md-screen {
     width: calc(100% - 5rem);
     margin-left: 5rem;
+}
+
+.ripple {
+    background-position: center;
+    background-color: #fff;
+    transition: background 0.8s;
+}
+
+.ripple:hover, .ripple:focus {
+    background: #eff2f3 radial-gradient(circle, transparent 1%, #eff2f3 1%)center/15000%;
+}
+
+.ripple:active {
+    background-color: #bec2c4;
+    background-size: 100%;
+    transition: background 0s;
 }

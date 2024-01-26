@@ -5,16 +5,16 @@
         <div class="head-content-right">
             <div class="head-menu">
                 <div class="head-menu-item">
-                    <button class="head-menu-item-btn ripple">
-                        <i class="fas fa-sign-in-alt"></i>
+                    <button routerLink="auth/login" class="head-menu-item-btn ripple">
+                        <i class="fas fa-sign-in-alt menu-icon"></i>
                         Sign-in
                     </button>
-                    <button class="head-menu-item-btn ripple">
-                        <i class="fas fa-edit"></i>
+                    <button routerLink="auth/register" class="head-menu-item-btn ripple">
+                        <i class="fas fa-edit menu-icon"></i>
                         Sign-up
                     </button>
-                    <button class="head-menu-item-btn ripple">
-                        <i class="fas fa-sign-out-alt"></i>
+                    <button routerLink="auth/logout" class="head-menu-item-btn ripple">
+                        <i class="fas fa-sign-out-alt menu-icon"></i>
                         Logout
                     </button>
                 </div>
@@ -23,7 +23,12 @@
                 <div class="head-user-avatar">
                     <img src="assets/user.png" alt="user" class="user-avatar">
                 </div>
-            </div>  
+                <div class="head-user-info-container">
+                    <div class="head-user-info">
+                        <span class="head-user-info-email">viktor-stefanov&#64;mail.bg</span>
+                    </div>
+                </div>  
+            </div>
         </div>
     </div>
 </div>
