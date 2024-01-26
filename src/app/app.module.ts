@@ -11,6 +11,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExperiencesModule } from './experiences/experiences.module';
 import { PlacesModule } from './places/places.module';
 import { AuthModule } from './auth/auth.module';
+import {MatDialogClose, MatDialogModule} from '@angular/material/dialog'; 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { AuthModule } from './auth/auth.module';
     CoreModule,
     SharedModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    MatDialogClose,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

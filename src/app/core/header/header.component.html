@@ -5,11 +5,11 @@
         <div class="head-content-right">
             <div class="head-menu">
                 <div class="head-menu-item">
-                    <button routerLink="auth/login" class="head-menu-item-btn ripple">
+                    <button (click)="openLoginDialog()" class="head-menu-item-btn ripple">
                         <i class="fas fa-sign-in-alt menu-icon"></i>
                         Sign-in
                     </button>
-                    <button routerLink="auth/register" class="head-menu-item-btn ripple">
+                    <button (click)="openRegisterDialog()" class="head-menu-item-btn ripple">
                         <i class="fas fa-edit menu-icon"></i>
                         Sign-up
                     </button>

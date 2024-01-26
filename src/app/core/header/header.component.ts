@@ -1,13 +1,20 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../../auth/register/register.component';
+import { LoginComponent } from '../../auth/login/login.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   @Input() collapsed = false;
   @Input() screenWidth = 0;
+
+  ngOnInit(): void {
+    this.openRegisterDialog();
+  }
 
   getHeadClass(): string {
     let styleClass = '';
@@ -18,6 +25,16 @@ export class HeaderComponent {
       styleClass = 'head-md-screen'//medium size
     }
     return styleClass;
+  }
+
+  constructor(private dialogRef: MatDialog) {}
+
+  openRegisterDialog() {
+    this.dialogRef.open(RegisterComponent);
+  }
+
+  openLoginDialog() {
+    this.dialogRef.open(LoginComponent);
   }
 
 }
