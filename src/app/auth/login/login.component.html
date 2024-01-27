@@ -12,9 +12,9 @@
     <hr />
   
     <form class="sign-in-form" [formGroup]="form" (ngSubmit)="submitHandler()">
-        <app-input [inputType]="'text'" [inputPlaceholder]="'example@email.com'" [formControlName]="'email'" class="sign-in-form-input-email"></app-input>
-        <app-input [inputType]="'text'" [inputPlaceholder]="'Password'" [formControlName]="'password'" class="sign-in-form-input-password"></app-input>
-        <app-button [form]="form" class="sign-in-btn-submit" [textBtn]="'Log in'" [typeBtn]="'submit'"></app-button>
+        <input class="sign-in-form-input-email" type="text" placeholder="example@email.com" formControlName="email"/>
+        <input class="sign-in-form-input-password" type="text" placeholder="Password" formControlName="password"/>
+        <button [disabled]="form.invalid" class="sign-in-btn-submit">Log In</button> 
       </form>
   </div>
   

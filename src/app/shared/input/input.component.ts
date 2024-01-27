@@ -9,5 +9,6 @@ export class InputComponent {
   @Input() inputType: string = '';
   @Input() inputPlaceholder: string = '';
   @Input() formControlName: string = '';
+  @Input() id?: string = '';
  
 }
