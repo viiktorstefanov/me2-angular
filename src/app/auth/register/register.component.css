@@ -15,7 +15,7 @@ input {
 
 .sign-up-container {
   width: 25rem;
-  height: 35rem;
+  max-height: 35rem;
   padding: 0.7rem 1rem;
 }
 
@@ -84,8 +84,9 @@ input {
     overflow: hidden;
     text-shadow: none;
     min-width: 13rem;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     cursor: pointer;
+    margin-bottom: 1rem;
   }
 
   .sign-up-btn-submit:hover, .sign-up-btn-submit:focus{
@@ -95,7 +96,7 @@ input {
   .sign-up-form-fullName{
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     .sign-up-form-input-firstName, .sign-up-form-input-lastName{
       width: 11rem;
@@ -109,7 +110,7 @@ input {
     text-align: justify;
     text-decoration: rgb(119, 119, 119);
     line-height: 14.7333px;
-    margin-top: 2.5em;
+    margin-top: 0.5rem;
     word-spacing: 0;
     color: #777;
     width: 22rem;

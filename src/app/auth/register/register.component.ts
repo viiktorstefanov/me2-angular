@@ -13,6 +13,7 @@ export class RegisterComponent {
     firstName: ['', [Validators.required, Validators.minLength(3)] ],
     lastName: ['', [Validators.required, Validators.minLength(5)] ],
     email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+    password: ['', [Validators.required, Validators.minLength(8)] ],
     phoneNumber: ['', [Validators.required, Validators.minLength(10)] ],
   })
   constructor(private ref: MatDialogRef<RegisterComponent>, private fb: FormBuilder) {}

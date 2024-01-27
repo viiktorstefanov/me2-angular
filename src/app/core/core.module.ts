@@ -8,6 +8,8 @@ import { MainComponent } from './main/main.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule
   ],
   exports: [
     HomeComponent,

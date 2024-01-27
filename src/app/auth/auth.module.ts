@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -23,6 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
+    SharedModule,
   ]
 })
 export class AuthModule { }

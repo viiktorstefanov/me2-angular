@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit{
   @Input() screenWidth = 0;
 
   ngOnInit(): void {
-    this.openRegisterDialog();
+    
   }
 
   getHeadClass(): string {

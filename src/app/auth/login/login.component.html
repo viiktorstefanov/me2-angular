@@ -1,1 +1,22 @@
-<h1>Login</h1>
+<div class="sign-in-container">
+  
+    <div class="sign-in-head">
+      <div class="sign-in-title">
+        <h1 class="sign-in-title-main">Sign In</h1>
+      </div>
+      <div class="btn-modal-close" (click)="closeDialog()">
+        <i class="fal fa-times close-icon"></i>
+      </div>
+    </div>
+  
+    <hr />
+  
+    <form class="sign-in-form" [formGroup]="form" (ngSubmit)="submitHandler()">
+        <app-input [inputType]="'text'" [inputPlaceholder]="'example@email.com'" [formControlName]="'email'" class="sign-in-form-input-email"></app-input>
+        <app-input [inputType]="'text'" [inputPlaceholder]="'Password'" [formControlName]="'password'" class="sign-in-form-input-password"></app-input>
+        <app-button [form]="form" class="sign-in-btn-submit" [textBtn]="'Log in'" [typeBtn]="'submit'"></app-button>
+      </form>
+  </div>
+  
+  
+  
