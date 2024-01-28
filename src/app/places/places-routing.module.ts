@@ -18,17 +18,17 @@ const routes: Routes = [
         {
           path: 'add',
           component: PlacesAddComponent,
-          title: 'Add place'
+          title: 'Add'
         },
         {
           path: 'edit',
           component: PlacesEditComponent,
-          title: 'Edit place'
+          title: 'Edit'
         },
         {
             path: ':placeId',
             component: PlacesDetailsComponent,
-            title: 'Place details'
+            title: 'Details'
         },
         
     ]

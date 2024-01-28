@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './experiences-details.component.css'
 })
 export class ExperiencesDetailsComponent {
+  constructor() {}
 
+  onDeleteHandler() :void {
+    console.log('delete');
+  }
 }

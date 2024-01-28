@@ -18,17 +18,17 @@ const routes: Routes = [
         {
           path: 'add',
           component: ExperiencesAddComponent,
-          title: 'Add experience'
+          title: 'Add'
         },
         {
           path: 'edit',
           component: ExperiencesEditComponent,
-          title: 'Edit experience'
+          title: 'Edit'
         },
         {
             path: ':experienceId',
             component: ExperiencesDetailsComponent,
-            title: 'Experience details'
+            title: 'Details'
         },
     ]
   },

@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 export class PlacesDetailsComponent {
   constructor() {}
 
+  onDeleteHandler() :void {
+    console.log('delete');
+  }
 }

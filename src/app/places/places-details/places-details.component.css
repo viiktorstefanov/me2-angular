@@ -61,7 +61,7 @@
     }
 }
 
-.add-place-from{
+.add-place-container{
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -119,3 +119,15 @@
         font-size: 1.1rem;
     }
 }
+
+.owner-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+  }
