@@ -78,6 +78,23 @@
     }
 }
 
+.head-content-left-link {
+    font-size: 16px;
+    height: 36px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 4px 20px;
+    margin-left: 5px;
+    outline: 0;
+    color: #495057;
+    text-decoration: none;
+}
+
+.head-content-left-link:hover, .head-content-left-link:focus {
+    color: #699dfa;
+}
+
 .head-trimmed {
     width: calc(100% - 16.5625rem);
     margin-left: 16.5625rem;
