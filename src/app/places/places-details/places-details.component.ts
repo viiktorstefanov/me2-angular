@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './places-details.component.css'
 })
 export class PlacesDetailsComponent {
+  constructor() {}
 
 }

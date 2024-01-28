@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ExperiencesEditComponent } from './experiences-edit/experiences-edit.component';
 
 
 
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ExperiencesListComponent,
     ExperiencesDetailsComponent,
-    ExperiencesAddComponent
+    ExperiencesAddComponent,
+    ExperiencesEditComponent
   ],
   imports: [
     CommonModule,

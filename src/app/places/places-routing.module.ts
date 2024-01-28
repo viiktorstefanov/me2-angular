@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlacesListComponent } from './places-list/places-list.component';
 import { PlacesDetailsComponent } from './places-details/places-details.component';
 import { PlacesAddComponent } from './places-add/places-add.component';
+import { PlacesEditComponent } from './places-edit/places-edit.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
           path: 'add',
           component: PlacesAddComponent,
           title: 'Add place'
+        },
+        {
+          path: 'edit',
+          component: PlacesEditComponent,
+          title: 'Edit place'
         },
         {
             path: ':placeId',

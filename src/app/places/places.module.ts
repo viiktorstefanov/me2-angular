@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PlacesEditComponent } from './places-edit/places-edit.component';
 
 
 
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     PlacesListComponent,
     PlacesDetailsComponent,
-    PlacesAddComponent
+    PlacesAddComponent,
+    PlacesEditComponent
   ],
   imports: [
     CommonModule,

@@ -7,18 +7,20 @@ import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { CardComponent } from './card/card.component'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     SpinnerComponent,
     ButtonComponent,
     InputComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     SpinnerComponent,

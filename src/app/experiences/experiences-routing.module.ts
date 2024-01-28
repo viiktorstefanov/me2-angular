@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExperiencesDetailsComponent } from './experiences-details/experiences-details.component';
 import { ExperiencesListComponent } from './experiences-list/experiences-list.component';
 import { ExperiencesAddComponent } from './experiences-add/experiences-add.component';
+import { ExperiencesEditComponent } from './experiences-edit/experiences-edit.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
           path: 'add',
           component: ExperiencesAddComponent,
           title: 'Add experience'
+        },
+        {
+          path: 'edit',
+          component: ExperiencesEditComponent,
+          title: 'Edit experience'
         },
         {
             path: ':experienceId',
