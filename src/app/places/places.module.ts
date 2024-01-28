@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PlacesListComponent } from './places-list/places-list.component';
 import { PlacesRoutingModule } from './places-routing.module';
 import { PlacesDetailsComponent } from './places-details/places-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,7 +14,8 @@ import { PlacesDetailsComponent } from './places-details/places-details.componen
   ],
   imports: [
     CommonModule,
-    PlacesRoutingModule
+    PlacesRoutingModule,
+    SharedModule
   ],
   exports: [
     PlacesListComponent

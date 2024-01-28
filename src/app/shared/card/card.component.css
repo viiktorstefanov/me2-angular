@@ -1,20 +1,41 @@
 .card {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     border-radius: .5rem;
     background-color: #fff;
     margin: 2.25rem 0 1.25rem 0;
     box-shadow: 0 .25rem .5rem #e6edef;
     color: #495057;
+    padding-bottom: 2rem;
 
     .card-head{
         padding: 1rem 1.5rem;
         border-bottom: 1px solid #edf1f7;
         font-size: 1rem;
         font-weight: 600;
+        text-align: center;
+    }
+
+    .card-head:focus, .card-head:hover {
+        color: #699dfa;
+        cursor: pointer;
+        text-decoration: underline;
     }
 
     .card-body{
         padding: 1rem 1.5rem;
+        text-align: justify;
+        max-height: 9rem;
+        max-width: 20rem;
+        max-height: 10rem;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        text-align: justify;
+        line-height: 1.8;
     }
 }

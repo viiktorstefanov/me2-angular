@@ -1,0 +1,62 @@
+.contacts-message {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contacts-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  margin: 2.25rem 0 1.25rem 0;
+  box-shadow: 0 0.25rem 0.5rem #e6edef;
+  color: #495057;
+  max-width: 50rem;
+
+  .card-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .card-body {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+
+    .card-body-item{
+        padding: 5rem 2.5rem;
+        padding-top: 1.5rem;
+        width: 12rem;
+        height: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        .contact-icons{
+            font-size: 4rem;
+            color: #263238;
+        }
+
+        .contact-icons:focus, .contact-icons:hover {
+            color: #699dfa;
+            cursor: pointer;
+        }
+    }
+
+  }
+}

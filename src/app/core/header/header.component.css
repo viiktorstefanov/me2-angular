@@ -5,7 +5,7 @@
     transition: all .5s ease;
     background: #f4f7fa;
     padding: 1rem 1.5rem 0 1.5rem;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
 
     .head-content{

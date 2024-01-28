@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ExperiencesListComponent } from './experiences-list/experiences-list.component';
 import { ExperiencesRoutingModule } from './experiences-routing.module';
 import { ExperiencesDetailsComponent } from './experiences-details/experiences-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -13,7 +14,8 @@ import { ExperiencesDetailsComponent } from './experiences-details/experiences-d
   ],
   imports: [
     CommonModule,
-    ExperiencesRoutingModule
+    ExperiencesRoutingModule,
+    SharedModule
   ],
   exports: [
     ExperiencesListComponent,
