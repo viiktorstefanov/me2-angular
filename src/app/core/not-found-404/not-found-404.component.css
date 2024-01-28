@@ -1,0 +1,26 @@
+.not-found-container-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+
+.not-found-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: auto;
+
+    h1{
+        font-size: 8rem;
+    }
+    
+    h2{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: #495057;
+    }
+}

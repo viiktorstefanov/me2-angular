@@ -4,18 +4,28 @@ import { ExperiencesListComponent } from './experiences-list/experiences-list.co
 import { ExperiencesRoutingModule } from './experiences-routing.module';
 import { ExperiencesDetailsComponent } from './experiences-details/experiences-details.component';
 import { SharedModule } from '../shared/shared.module';
+import { ExperiencesAddComponent } from './experiences-add/experiences-add.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     ExperiencesListComponent,
-    ExperiencesDetailsComponent
+    ExperiencesDetailsComponent,
+    ExperiencesAddComponent
   ],
   imports: [
     CommonModule,
     ExperiencesRoutingModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
+    TextFieldModule,
+    ReactiveFormsModule
   ],
   exports: [
     ExperiencesListComponent,

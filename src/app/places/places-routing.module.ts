@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PlacesListComponent } from './places-list/places-list.component';
 import { PlacesDetailsComponent } from './places-details/places-details.component';
+import { PlacesAddComponent } from './places-add/places-add.component';
 
 const routes: Routes = [
   {
@@ -14,10 +15,16 @@ const routes: Routes = [
             title: 'Places'
         },
         {
+          path: 'add',
+          component: PlacesAddComponent,
+          title: 'Add place'
+        },
+        {
             path: ':placeId',
             component: PlacesDetailsComponent,
             title: 'Place details'
-        }
+        },
+        
     ]
   },
 ];

@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-head">Add new place</div>
+  <div class="card-body">
+    <form class="add-place-from" [formGroup]="form" (ngSubmit)="submitHandler()">
+      <input
+        class="title-input"
+        type="text"
+        placeholder="Title*"
+        formControlName="title"
+      />
+      <input
+        class="city-input"
+        type="text"
+        placeholder="City*"
+        formControlName="city"
+      />
+      <input
+        class="street-input"
+        type="text"
+        placeholder="Street*"
+        formControlName="street"
+      />
+      <mat-form-field class="description-input-field">
+        <mat-label>Description</mat-label>
+        <textarea
+          class="description-input"
+          formControlName="description"
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="5"
+          cdkAutosizeMaxRows="20"
+        ></textarea>
+      </mat-form-field>
+      <button [disabled]="form.invalid" class="submit-btn" [disabled]="">Submit</button>
+    </form>
+  </div>
+</div>
+
