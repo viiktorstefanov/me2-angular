@@ -2,6 +2,22 @@
   width: 25rem;
   max-height: 25rem;
   padding: 0.7rem 1rem;
+  position: relative;
+}
+
+.notify {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 2.5rem;
+  right: 5rem;
+  z-index: 3;
+  width: 10rem;
+  height: 4rem;
+  background-color: #bec2c4;
+  border-radius: 6px;
+  display: none;
 }
 
 .sign-in-head {
@@ -84,6 +100,8 @@
   .error>div{
     margin-left: 1rem;
     margin-top: 0.3rem;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 0.8rem;
   }
 
    #email, #password{

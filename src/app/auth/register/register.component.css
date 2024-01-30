@@ -1,6 +1,5 @@
 .sign-up-container {
-  width: 25rem;
-  max-height: 35rem;
+  width: 28rem;
   padding: 0.7rem 1rem;
 }
 
@@ -55,6 +54,20 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+
+  .error {
+    color: #f02849;
+  }
+
+  .error>div{
+    margin-top: 0.3rem;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 0.7rem;
+  }
+
+  #firstName, #lastName, #email, #phoneNumber, #password{
+    border: 1px solid #f02849;
+  }
 
   .sign-up-form-input-firstName, .sign-up-form-input-lastName, .sign-up-form-input-email, .sign-up-form-input-password, .sign-up-form-input-phoneNumber {
     width: 23.3rem;
@@ -124,4 +137,9 @@
       text-decoration: underline;
     }
   }
+}
+
+.firstName-wrapper,.lastName-wrapper, .email-wrapper, .password-wrapper, .phoneNumber-wrapper{
+  display: flex;
+  flex-direction: column;
 }

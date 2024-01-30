@@ -1,4 +1,5 @@
 <div class="sign-in-container">
+  <div class="notify"></div>
   <div class="sign-in-head">
     <div class="sign-in-title">
       <h1 class="sign-in-title-main">Sign In</h1>
@@ -32,7 +33,7 @@
         class="error"
       >
         <div *ngIf="email.errors?.['required']">Email is required</div>
-        <div *ngIf="email.errors?.['pattern']">Email is not valid</div>
+        <div *ngIf="email.errors?.['pattern']">Email is invalid</div>
       </small>
     </div>
     <div>

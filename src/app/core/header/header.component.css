@@ -18,6 +18,7 @@
         justify-content: space-between;
 
         .head-content-left{
+            display: flex;
         }
 
         .head-content-right{
