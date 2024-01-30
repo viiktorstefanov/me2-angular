@@ -1,22 +1,68 @@
 <div class="sign-in-container">
-  
-    <div class="sign-in-head">
-      <div class="sign-in-title">
-        <h1 class="sign-in-title-main">Sign In</h1>
-      </div>
-      <div class="btn-modal-close" (click)="closeDialog()">
-        <i class="fal fa-times close-icon"></i>
-      </div>
+  <div class="sign-in-head">
+    <div class="sign-in-title">
+      <h1 class="sign-in-title-main">Sign In</h1>
     </div>
-  
-    <hr />
-  
-    <form class="sign-in-form" [formGroup]="form" (ngSubmit)="submitHandler()">
-        <input class="sign-in-form-input-email" type="text" placeholder="example@email.com" formControlName="email"/>
-        <input class="sign-in-form-input-password" type="text" placeholder="Password" formControlName="password"/>
-        <button [disabled]="form.invalid" class="sign-in-btn-submit">Log In</button> 
-      </form>
+    <div class="btn-modal-close" (click)="closeDialog()">
+      <i class="fal fa-times close-icon"></i>
+    </div>
   </div>
-  
-  
-  
+
+  <hr />
+
+  <form class="sign-in-form" [formGroup]="form" (ngSubmit)="submitHandler()">
+    <div>
+      <input
+        class="sign-in-form-input-email"
+        type="text"
+        placeholder="example@email.com"
+        formControlName="email"
+        id="{{
+          email.invalid && (email.dirty || email.touched) ? 'email' : ''
+        }}"
+      />
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="error-icon-wrapper"
+      >
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <small
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="error"
+      >
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+        <div *ngIf="email.errors?.['pattern']">Email is not valid</div>
+      </small>
+    </div>
+    <div>
+      <input
+      class="sign-in-form-input-password"
+      id="{{
+        password.invalid && (password.dirty || password.touched)
+          ? 'password'
+          : ''
+      }}"
+      type="text"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="error-icon-wrapper"
+    >
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    <small
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="error"
+    >
+      <div *ngIf="password.errors?.['required']">Password is required</div>
+      <div *ngIf="password.errors?.['minlength']">
+        Password must be at least 8 symbols
+      </div>
+    </small>
+    </div>
+    <button [disabled]="form.invalid" class="sign-in-btn-submit">Log In</button>
+  </form>
+</div>

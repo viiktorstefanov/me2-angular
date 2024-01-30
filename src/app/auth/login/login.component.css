@@ -42,8 +42,8 @@
   padding-top: 0.8rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
 
   .sign-in-form-input-email,
   .sign-in-form-input-password {
@@ -63,6 +63,31 @@
 
   .sign-in-form-input-email {
     margin-top: 1rem;
+  }
+
+  .error {
+    color: #f02849;
+  }
+
+  .error-icon-wrapper {
+    position: relative;
+  }
+
+  .error-icon-wrapper>i {
+    position: absolute;
+    bottom: 14px;
+    right: 13px;
+    color: #f02849;
+    font-size: 1.3rem;
+  }
+
+  .error>div{
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+  }
+
+   #email, #password{
+    border: 1px solid #f02849;
   }
 
   .sign-in-btn-submit {
