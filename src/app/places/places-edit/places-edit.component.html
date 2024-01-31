@@ -1,27 +1,66 @@
 <div class="card">
-    <div class="card-head">Edit place</div>
-    <div class="card-body">
-      <form class="add-place-form" [formGroup]="form" (ngSubmit)="submitHandler()">
+  <div class="card-head">Edit place</div>
+  <div class="card-body">
+    <form class="edit-place-form" [formGroup]="form" (ngSubmit)="submitHandler()">
+      <div class="title-wrapper">
         <input
           class="title-input"
           type="text"
           placeholder="Title*"
           formControlName="title"
+          id="{{
+            title.invalid && (title.dirty || title.touched)
+              ? 'title'
+              : ''
+          }}"
         />
+        <small *ngIf="title.invalid && (title.dirty || title.touched)" class="error">
+          <div *ngIf="title.errors?.['required']">Title is required</div>
+          <div *ngIf="title.errors?.['minlength']">
+            Title should be at least 5 characters
+          </div>
+        </small>
+      </div>
+      <div class="city-wrapper">
         <input
           class="city-input"
           type="text"
           placeholder="City*"
           formControlName="city"
+          id="{{
+            city.invalid && (city.dirty || city.touched)
+              ? 'city'
+              : ''
+          }}"
         />
+        <small *ngIf="city.invalid && (city.dirty || city.touched)" class="error">
+          <div *ngIf="city.errors?.['required']">City is required</div>
+          <div *ngIf="city.errors?.['minlength']">
+            City should be at least 3 characters
+          </div>
+        </small>
+      </div>
+      <div class="street-wrapper">
         <input
           class="street-input"
           type="text"
           placeholder="Street*"
           formControlName="street"
+          id="{{
+            street.invalid && (street.dirty || street.touched)
+              ? 'street'
+              : ''
+          }}"
         />
-        <mat-form-field class="description-input-field">
-          <mat-label>Description</mat-label>
+        <small *ngIf="street.invalid && (street.dirty || street.touched)" class="error">
+          <div *ngIf="street.errors?.['required']">Street is required</div>
+          <div *ngIf="street.errors?.['minlength']">
+            Street should be at least 5 characters
+          </div>
+        </small>
+      </div>
+      <div>
+        <mat-form-field class="description-input-field" >
           <textarea
             class="description-input"
             formControlName="description"
@@ -30,12 +69,22 @@
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="5"
             cdkAutosizeMaxRows="20"
+            placeholder="Description*"
+            id="description-input"
           ></textarea>
+          <small *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+            <div *ngIf="description.errors?.['required']">Description is required</div>
+            <div *ngIf="description.errors?.['minlength']">
+              Description should be at least 100 characters
+            </div>
+          </small>
         </mat-form-field>
-      </form>
-      <div class="card-footer">
-        <button [disabled]="form.invalid" class="submit-btn"><a [routerLink]="'/places'" >Save</a></button>
-    </div>
+      </div>
+    </form>
+    <div class="card-footer">
+      <button [disabled]="form.invalid" class="submit-btn">
+        <a [routerLink]="'/places'">Save</a>
+      </button>
     </div>
   </div>
-  
+</div>

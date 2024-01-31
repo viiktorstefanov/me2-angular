@@ -13,9 +13,9 @@ export class LogoutComponent {
   constructor(private router: Router, private userService: UserService, private tokenService: TokenService) {}
 
   ngOnInit(): void {
+    this.router.navigate(['/home']);
     this.userService.logout().subscribe(() => {
       this.tokenService.clearToken();
-      this.router.navigate(['/home']);
     });
   }
 }

@@ -61,14 +61,14 @@
   }
 }
 
-.add-place-container{
+.add-experience-container{
 display: flex;
 flex-direction: column;
 gap: 1rem;
 align-items: center;
 }
 
-.city-info, .street-info, .title-info, .description-info {
+.person-info, .phoneNumber-info, .service-info, .description-info {
   width: 23.3rem;
   height: 3rem;
   background-color: #f5f5f5;
@@ -81,6 +81,9 @@ align-items: center;
   word-spacing: 0px;
   text-decoration: rgb(28, 30, 33);
   font-size: 1.1rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .description-info{

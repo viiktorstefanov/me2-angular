@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class PlacesAddComponent {
   form = this.fb.group({
-    title: ['', [Validators.required] ],
-    city: ['', [Validators.required] ],
-    street: ['', [Validators.required]],
-    description: ['', [Validators.required]],
+    title: ['', [Validators.required, Validators.minLength(5)] ],
+    city: ['', [Validators.required, Validators.minLength(3)] ],
+    street: ['', [Validators.required, Validators.minLength(5)]],
+    description: ['', [Validators.required, Validators.minLength(100)]],
   })
 
   constructor(private fb: FormBuilder, private router: Router) {}
@@ -23,4 +23,19 @@ export class PlacesAddComponent {
     this.router.navigate(['/places'])
   }
   
+  get title() {
+    return this.form.controls['title'];
+  }
+
+  get city() {
+    return this.form.controls['city'];
+  }
+
+  get street() {
+    return this.form.controls['street'];
+  }
+
+  get description() {
+    return this.form.controls['description'];
+  }
 }

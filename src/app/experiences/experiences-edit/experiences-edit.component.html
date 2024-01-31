@@ -1,27 +1,66 @@
 <div class="card">
-    <div class="card-head">Edit exp</div>
-    <div class="card-body">
-      <form class="add-place-form" [formGroup]="form" (ngSubmit)="submitHandler()">
+  <div class="card-head">Edit exp</div>
+  <div class="card-body">
+    <form class="edit-experience-form" [formGroup]="form" (ngSubmit)="submitHandler()">
+      <div class="service-wrapper">
         <input
-          class="title-input"
+          class="service-input"
           type="text"
-          placeholder="Title*"
-          formControlName="title"
+          placeholder="Service*"
+          formControlName="service"
+          id="{{
+            service.invalid && (service.dirty || service.touched)
+              ? 'service'
+              : ''
+          }}"
         />
+        <small *ngIf="service.invalid && (service.dirty || service.touched)" class="error">
+          <div *ngIf="service.errors?.['required']">Service is required</div>
+          <div *ngIf="service.errors?.['minlength']">
+            Service should be at least 5 characters
+          </div>
+        </small>
+      </div>
+      <div class="person-wrapper">
         <input
-          class="city-input"
+          class="person-input"
           type="text"
-          placeholder="City*"
-          formControlName="city"
+          placeholder="Person's name*"
+          formControlName="person"
+          id="{{
+            person.invalid && (person.dirty || person.touched)
+              ? 'city'
+              : ''
+          }}"
         />
+        <small *ngIf="person.invalid && (person.dirty || person.touched)" class="error">
+          <div *ngIf="person.errors?.['required']"> Person's name is required</div>
+          <div *ngIf="person.errors?.['minlength']">
+            Person's name should be at least 3 characters
+          </div>
+        </small>
+      </div>
+      <div class="phoneNumber-wrapper">
         <input
-          class="street-input"
+          class="phoneNumber-input"
           type="text"
-          placeholder="Street*"
-          formControlName="street"
+          placeholder="Person's phone number*"
+          formControlName="phoneNumber"
+          id="{{
+            phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)
+              ? 'phoneNumber'
+              : ''
+          }}"
         />
-        <mat-form-field class="description-input-field">
-          <mat-label>Description</mat-label>
+        <small *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="error">
+          <div *ngIf="phoneNumber.errors?.['required']">Person's phone number is required</div>
+          <div *ngIf="phoneNumber.errors?.['minlength']">
+            Person's phone number should be at least 10 characters
+          </div>
+        </small>
+      </div>
+      <div class="description-wrapper">
+        <mat-form-field class="description-input-field" >
           <textarea
             class="description-input"
             formControlName="description"
@@ -30,12 +69,20 @@
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="5"
             cdkAutosizeMaxRows="20"
+            placeholder="Description*"
+            id="description-input"
           ></textarea>
+          <small *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+            <div *ngIf="description.errors?.['required']">Description is required</div>
+            <div *ngIf="description.errors?.['minlength']">Description should be at least 100 characters</div>
+          </small>
         </mat-form-field>
-      </form>
-      <div class="card-footer">
-        <button [disabled]="form.invalid" class="submit-btn"><a [routerLink]="'/places'" >Save</a></button>
-    </div>
+      </div>
+    </form>
+    <div class="card-footer">
+      <button [disabled]="form.invalid" class="submit-btn">
+        <a [routerLink]="'/experiences'">Save</a>
+      </button>
     </div>
   </div>
-  
+</div>

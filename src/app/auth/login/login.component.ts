@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(8)] ],
   });
 
-  constructor(private ref: MatDialogRef<LoginComponent>, private fb: FormBuilder) {}
+  constructor(private ref: MatDialogRef<LoginComponent>, private fb: FormBuilder, private toastr: ToastrService) {}
 
   closeDialog() {
     this.ref.close();

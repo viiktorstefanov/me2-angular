@@ -8,16 +8,31 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ExperiencesEditComponent {
   form = this.fb.group( {
-    title: ['', [Validators.required] ],
-    city: ['', [Validators.required] ],
-    street: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-  })
+    service: ['', [Validators.required, Validators.minLength(5)] ],
+    person: ['', [Validators.required, Validators.minLength(3)] ],
+    phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
+    description: ['', [Validators.required, Validators.minLength(100)]],
+  });
 
   constructor(private fb: FormBuilder) {}
 
   submitHandler() : void {
     console.log(this.form.value);
-    
+  }
+
+  get service() {
+    return this.form.controls['service'];
+  }
+
+  get person() {
+    return this.form.controls['person'];
+  }
+
+  get phoneNumber() {
+    return this.form.controls['phoneNumber'];
+  }
+
+  get description() {
+    return this.form.controls['description'];
   }
 }

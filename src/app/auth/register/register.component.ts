@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../user.service';
+import { User } from '../types/User';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +20,29 @@ export class RegisterComponent {
     password: ['', [Validators.required, Validators.minLength(8)] ],
     phoneNumber: ['', [Validators.required, Validators.minLength(10)] ],
   })
-  constructor(private ref: MatDialogRef<RegisterComponent>, private fb: FormBuilder) {}
+  constructor(private ref: MatDialogRef<RegisterComponent>, private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
+    // this.toastr.error('Hello world!', 'Toastr fun!');
+  }
 
   closeDialog() {
     this.ref.close();
   }
 
   submitHandler() :void {
-    console.log(this.form.value);
+    // this.userService.register(this.form.value as User).subscribe(
+    //   response => {
+    //     // Handle successful registration
+    //     console.log('Registration successful:', response);
+    //     // Optionally, close the dialog
+    //     this.ref.close();
+    //   },
+    //   error => {
+    //     // Handle registration error
+    //     console.error('Registration error:', error);
+    //     // Optionally, show an error message to the user
+    //   }
+    // );
+  
   }
 
   get email() {

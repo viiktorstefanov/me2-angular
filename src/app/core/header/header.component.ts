@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit{
   @Input() collapsed = false;
   @Input() screenWidth = 0;
 
+  user: boolean = true;
+
   ngOnInit(): void {
     
   }
