@@ -24,7 +24,6 @@ import { appInterceptorProvider } from './app.interceptor';
     AppComponent,
   ],
   imports: [
-    AuthModule,
     ExperiencesModule,
     PlacesModule,
     BrowserModule,

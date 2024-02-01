@@ -3,11 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { authGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'auth',
-    children: [
         {
             path: 'register',
             component: RegisterComponent,
@@ -21,11 +19,9 @@ const routes: Routes = [
         {
             path: 'logout',
             component: LogoutComponent,
-            // canActivate: [routeGuard],
+            canActivate: [authGuard],
             title: 'Logout',
           }
-    ]
-  },
 ];
 
 @NgModule({
