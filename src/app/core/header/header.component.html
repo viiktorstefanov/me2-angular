@@ -1,6 +1,6 @@
 <div class="head" [ngClass]="getHeadClass()">
     <div class="head-content">
-        <div class="head-content-left">
+        <div *ngIf="isAuthenticated" class="head-content-left">
             <a [routerLink]="'/experiences/add'" class="head-content-left-link">
                 <i class="fas fa-plus add-icon"></i>
                 Add experience
@@ -15,24 +15,24 @@
                 <!-- <div class="head-user-avatar">
                     <img src="assets/user.png" alt="user" class="user-avatar">
                 </div> -->
-                <div class="head-user-info-container">
+                <div *ngIf="isAuthenticated" class="head-user-info-container">
                     <div class="head-user-info">
-                        <span class="head-user-info-email">user&#64;email.com</span>
+                        <span class="head-user-info-email">{{userInfo?.email}}</span>
                     </div>
                 </div>  
             </div>
             <div class="head-menu">
                 <div class="head-menu-item">
-                    <button (click)="openLoginDialog()" class="head-menu-item-btn ripple">
+                    <button *ngIf="!isAuthenticated" (click)="openLoginDialog()" class="head-menu-item-btn ripple">
                         <i class="fas fa-sign-in-alt menu-icon"></i>
                         Sign-in
                     </button>
-                    <button (click)="openRegisterDialog()" class="head-menu-item-btn ripple">
+                    <button *ngIf="!isAuthenticated" (click)="openRegisterDialog()" class="head-menu-item-btn ripple">
                         <!-- <i class="fas fa-edit menu-icon"></i> -->
                         <i class="fas fa-user-plus menu-icon"></i>
                         Sign-up
                     </button>
-                    <button *ngIf="!user" routerLink="auth/logout" class="head-menu-item-btn ripple">
+                    <button *ngIf="isAuthenticated" routerLink="auth/logout" class="head-menu-item-btn ripple">
                         <i class="fas fa-sign-out-alt menu-icon"></i>
                         Logout
                     </button>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-import { TokenService } from '../token.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-logout',
@@ -10,12 +10,22 @@ import { TokenService } from '../token.service';
 })
 export class LogoutComponent {
 
-  constructor(private router: Router, private userService: UserService, private tokenService: TokenService) {}
+  errors: string[] = [];
+
+  constructor(private router: Router, private userService: UserService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    this.router.navigate(['/home']);
-    this.userService.logout().subscribe(() => {
-      this.tokenService.clearToken();
+    this.userService.logout().subscribe({
+      next: () => {
+        this.userService.clearUser();
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.router.navigate(['/not-found']);
+        this.errors = [];
+        this.errors.push(err.error.message);
+        this.errors.forEach(error => this.toastr.error(error, 'Error'));   
+      }
     });
   }
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +11,37 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-
   form = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
     password: ['', [Validators.required, Validators.minLength(8)] ],
   });
 
-  constructor(private ref: MatDialogRef<LoginComponent>, private fb: FormBuilder, private toastr: ToastrService) {}
+  errors: string[] = [];
+
+  constructor(private ref: MatDialogRef<LoginComponent>, private fb: FormBuilder, private toastr: ToastrService, private userService: UserService, private router: Router) {}
 
   closeDialog() {
     this.ref.close();
   }
 
   submitHandler() :void {
-    console.log(this.form.value);
+    if(this.form.invalid) {
+      return;
+    }
+
+    const { email, password } = this.form.value;
+    
+    this.userService.login(email!, password!).subscribe({
+      next: (response) => {
+        this.closeDialog();
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.errors = [];
+        this.errors.push(err.error.message);
+        this.errors.forEach(error => this.toastr.error(error, 'Error'));   
+      }
+    })
   }
 
   get email() {

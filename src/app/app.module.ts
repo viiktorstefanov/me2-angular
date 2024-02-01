@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatDialogClose, MatDialogModule} from '@angular/material/dialog'; 
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { appInterceptorProvider } from './app.interceptor';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     ToastrModule.forRoot({positionClass: 'toast-top-center', preventDuplicates: false, progressBar: false, tapToDismiss: true, progressAnimation: 'decreasing', newestOnTop: true, disableTimeOut: false, closeButton: true}),
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../user.service';
-import { User } from '../types/User';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -19,30 +18,35 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/), Validators.minLength(9)]],
     password: ['', [Validators.required, Validators.minLength(8)] ],
     phoneNumber: ['', [Validators.required, Validators.minLength(10)] ],
-  })
-  constructor(private ref: MatDialogRef<RegisterComponent>, private fb: FormBuilder, private userService: UserService, private router: Router, private toastr: ToastrService) {
-    // this.toastr.error('Hello world!', 'Toastr fun!');
-  }
+  });
+
+  errors: string[] = [];
+
+  constructor(private ref: MatDialogRef<RegisterComponent>, private fb: FormBuilder, private userService: UserService, private toastr: ToastrService, private router: Router) {}
 
   closeDialog() {
     this.ref.close();
   }
 
   submitHandler() :void {
-    // this.userService.register(this.form.value as User).subscribe(
-    //   response => {
-    //     // Handle successful registration
-    //     console.log('Registration successful:', response);
-    //     // Optionally, close the dialog
-    //     this.ref.close();
-    //   },
-    //   error => {
-    //     // Handle registration error
-    //     console.error('Registration error:', error);
-    //     // Optionally, show an error message to the user
-    //   }
-    // );
-  
+    if(this.form.invalid) {
+      return;
+    }
+
+    const { firstName, lastName, email, password, phoneNumber } = this.form.value;
+    
+    this.userService.register(firstName!, lastName!, email!, password!, phoneNumber!).subscribe({
+      next: (response) => {
+        this.closeDialog();
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.errors = [];
+        this.errors.push(err.error.message);
+        this.errors.forEach(error => this.toastr.error(error, 'Error')); 
+      }
+    })
+    
   }
 
   get email() {
