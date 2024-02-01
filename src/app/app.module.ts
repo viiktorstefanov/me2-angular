@@ -10,7 +10,6 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExperiencesModule } from './experiences/experiences.module';
 import { PlacesModule } from './places/places.module';
-import { AuthModule } from './auth/auth.module';
 import { ToastrModule } from 'ngx-toastr';
 
 import {MatDialogClose, MatDialogModule} from '@angular/material/dialog'; 

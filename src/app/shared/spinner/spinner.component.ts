@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { SpinnerService } from './spinner.service';
 
 @Component({
   selector: 'app-spinner',
@@ -8,4 +8,6 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 })
 export class SpinnerComponent {
   @Input() color: string = 'primary';
+
+  constructor(public spinnerService: SpinnerService) {}
 }

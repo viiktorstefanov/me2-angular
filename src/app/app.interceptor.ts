@@ -13,6 +13,7 @@ import { UserService } from './auth/user.service';
 import { User } from './auth/types/User';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SpinnerService } from './shared/spinner/spinner.service';
 
 const { apiUrl } = environment;
 
@@ -21,13 +22,13 @@ export class AppInterCeptor implements HttpInterceptor {
 
   errors: string[] = [];
 
-  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) {}
+  constructor(private userService: UserService, private router: Router, private toastr: ToastrService, private spinnerService: SpinnerService) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    
+    this.spinnerService.show();
     
     if (req.url.startsWith('/api')) {
       req = req.clone({
@@ -78,6 +79,9 @@ export class AppInterCeptor implements HttpInterceptor {
         }
 
         return throwError(() => err);
+      }),
+      finalize(() => {
+        this.spinnerService.hide();
       })
     );
   }
