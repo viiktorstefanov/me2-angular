@@ -9,25 +9,31 @@ import { environment } from '../../environments/environment';
 })
 export class UserService implements OnDestroy{
   private $$user = new BehaviorSubject<User | undefined>(undefined); 
-  public user$ = this.$$user.asObservable();
+  private user$ = this.$$user.asObservable();
 
   user: User | undefined;
+  subscription: Subscription;
+
   USER_KEY = environment.USER_KEY;
   
 
   get isLogged() : boolean {
     return !!this.user;
+  };
+
+  isOwner(ownerId: string | undefined) : boolean | undefined {
+    return !!(this.user?._id === ownerId);
   }
 
-  subscription: Subscription;
+  get getUserInfo() : User | undefined {
+    return this.user;
+  };
 
   constructor(private http: HttpClient) {
-    const storedUser = localStorage.getItem(this.USER_KEY);
+    const storedUser = sessionStorage.getItem(this.USER_KEY);
 
     
-    if(storedUser) {
-      console.log(JSON.parse(storedUser));
-      
+    if(storedUser) {    
       this.$$user.next(JSON.parse(storedUser));
     }
     
@@ -38,29 +44,27 @@ export class UserService implements OnDestroy{
   };
 
   login(email: string, password: string) : Observable<any>{
-    return this.http.post<User>('/api/users/login', { email, password }).pipe(tap((user) => this.$$user.next(user)));
+    return this.http.post<User>('/api/users/login', { email, password });
+    //.pipe(tap((user) => this.$$user.next(user)))
   };
 
   register(firstName: string, lastName: string, email: string, password: string, phoneNumber: string) : Observable<any>{
-    return this.http.post<User>('/api/users/register', { firstName, lastName, email, password, phoneNumber }).pipe(tap((user) => this.$$user.next(user)));;
+    return this.http.post<User>('/api/users/register', { firstName, lastName, email, password, phoneNumber });
+    //.pipe(tap((user) => this.$$user.next(user)))
   };
 
   logout() {
    return this.http.get('/api/users/logout').pipe(tap(() => this.$$user.next(undefined)));
   };
 
-  get userInfo() : User | undefined {
-    return this.user;
-  };
-
   updateUser(user: User | any) { 
     this.$$user.next(user);
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
   };
 
   clearUser() {
-    localStorage.removeItem(this.USER_KEY);
+    sessionStorage.removeItem(this.USER_KEY);
   };
 
   ngOnDestroy(): void {

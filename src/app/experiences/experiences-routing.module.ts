@@ -26,7 +26,7 @@ const routes: Routes = [
           title: 'Edit'
         },
         {
-            path: ':experienceId',
+            path: 'details/:experienceId',
             component: ExperiencesDetailsComponent,
             title: 'Details'
         },

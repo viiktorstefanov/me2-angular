@@ -5,4 +5,5 @@ export type User = {
     password: string,
     phoneNumber: string,
     accessToken?: string,
+    _id: string,
 };

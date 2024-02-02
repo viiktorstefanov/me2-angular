@@ -1,13 +1,14 @@
-<div class="card">
+<app-spinner *ngIf="!experience"></app-spinner>
+<div class="card" *ngIf="experience">
     <div class="card-head">Details</div>
     <div class="card-body">
-      <div class="add-experience-container">
-        <span class="service-info">Service</span>
-        <span class="person-info">Person</span>
-        <span class="phoneNumber-info">Person's phone number</span>
-        <textarea class="description-info" readonly>fewffffffloremw Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos porro unde, expedita excepturi aliquam maxime. Perspiciatis ad tempore assumenda! Vel optio accusamus ea, facilis asperiores possimus temporibus et quos quam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore aut perspiciatis dolorem repellendus eveniet voluptas natus! Ut, obcaecati, explicabo nam est eaque doloribus illum eligendi tenetur dignissimos veritatis recusandae ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt vero illo nesciunt quisquam optio, doloribus, at est beatae maxime reprehenderit nobis veritatis eaque blanditiis earum accusamus. Reprehenderit dicta voluptatum earum. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates excepturi ex voluptatibus. Quia natus, nihil hic voluptatem amet beatae unde corrupti dolorem aperiam iusto aspernatur quasi, veritatis odio, perferendis at. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores corrupti facilis eos ipsa optio nesciunt? Debitis, cumque neque veniam quia eveniet nisi praesentium consequatur reiciendis perferendis numquam facere rerum molestiae.</textarea>
+      <div class="details-experience-container">
+        <span class="service-info">{{experience.service}}</span>
+        <span class="person-info">{{experience.person}}</span>
+        <span class="phoneNumber-info">{{experience.phoneNumber}}</span>
+        <textarea class="description-info" readonly>{{experience.description}}</textarea>
       </div>
-      <div class="owner-buttons">
+      <div class="owner-buttons" *ngIf="isOwner">
         <a routerLink="/experiences/edit"><button class="submit-btn">Edit</button></a>
         <button class="submit-btn" (click)="onDeleteHandler()">Delete</button>
       </div>

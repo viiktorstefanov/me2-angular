@@ -24,19 +24,24 @@ export class LoginComponent {
     this.ref.close();
   }
 
-  submitHandler() :void {
+  submitHandler() : void {
     if(this.form.invalid) {
-      return;
+       this.toastr.error('All fields are required', 'Error');
+       return;
     }
 
     const { email, password } = this.form.value;
     
     this.userService.login(email!, password!).subscribe({
-      next: (response) => {
+      next: (user) => {
         this.closeDialog();
         this.router.navigate(['/home']);
       },
       error: (err) => {
+        if(err.status === 0) {
+          this.toastr.error('Unable to connect to the server', 'Error');
+          return;
+         }
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error'));   

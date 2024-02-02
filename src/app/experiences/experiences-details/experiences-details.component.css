@@ -61,11 +61,12 @@
   }
 }
 
-.add-experience-container{
+.details-experience-container{
 display: flex;
 flex-direction: column;
 gap: 1rem;
 align-items: center;
+justify-content: center;
 }
 
 .person-info, .phoneNumber-info, .service-info, .description-info {

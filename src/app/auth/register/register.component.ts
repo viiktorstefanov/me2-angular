@@ -36,11 +36,15 @@ export class RegisterComponent {
     const { firstName, lastName, email, password, phoneNumber } = this.form.value;
     
     this.userService.register(firstName!, lastName!, email!, password!, phoneNumber!).subscribe({
-      next: (response) => {
+      next: (user) => {
         this.closeDialog();
         this.router.navigate(['/home']);
       },
       error: (err) => {
+        if(err.status === 0) {
+          this.toastr.error('Unable to connect to the server', 'Error');
+          return;
+         }
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 

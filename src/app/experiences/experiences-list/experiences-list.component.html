@@ -1,13 +1,7 @@
+<app-spinner></app-spinner>
 <h1>Experience list</h1>
-<div class="experiences-container">
-    <app-card [title]="'I found best worker'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>  
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>  
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
+<div class="experiences-container" *ngIf="experiencesList && experiencesList.length > 0">
+    <app-card *ngFor="let experience of experiencesList" [title]="experience.service" [content]="experience.description" [path]="'details/' + experience._id" ></app-card>
 </div>
+<p *ngIf="experiencesList && experiencesList.length == 0" class="experiences-container-message">No experiences have been added yet.</p>
+

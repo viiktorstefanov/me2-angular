@@ -36,7 +36,7 @@ export class AppInterCeptor implements HttpInterceptor {
       });
     }
     
-    const userData: User | undefined = this.userService.userInfo;
+    const userData: User | undefined = this.userService.getUserInfo;
     
     if (userData) {
       req = req.clone({
@@ -70,7 +70,7 @@ export class AppInterCeptor implements HttpInterceptor {
           return EMPTY;
         }
 
-        if (err.status === 404 && req.url.includes('user-collection')) {
+        if (err.status === 404) {
           this.router.navigate(['not-found']);
           this.errors = [];
           this.errors.push(err.error.message);

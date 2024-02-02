@@ -19,7 +19,7 @@ export class HeaderComponent{
   }
 
   get userInfo() : User | undefined {
-    return this.userService.userInfo;
+    return this.userService.getUserInfo;
   }
 
   getHeadClass(): string {
