@@ -16,51 +16,28 @@
 
 <h1 class="recent-posts-message">Recent posts</h1>
 <div class="recent-post-container">
-  <div class="experiences-container">
-    <app-card
-      [path]="'/experiences/experienceId'"
-      [title]="'Proffesional painter'"
-      [content]="
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'
-      "
-    ></app-card>
-    <app-card
-      [path]="'/experiences/experienceId'"
-      [title]="'Electrician'"
-      [content]="
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'
-      "
-    ></app-card>
-    <app-card
-      [path]="'/experiences/experienceId'"
-      [title]="'Technician'"
-      [content]="
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'
-      "
-    ></app-card>
+  <div
+    class="experiences-container"
+    *ngIf="experiences && experiences.length > 0"
+  >
+  <h1 class="recent-posts-experiences-message">experiences</h1>
+    <div class="experiences-container-wrapper">
+      <app-card
+        *ngFor="let experience of experiences"
+        [title]="experience.service"
+        [content]="experience.description"
+        [path]="'/experiences/details/' + experience._id"
+      ></app-card>
+    </div>
   </div>
-  <div class="recent-places-container">
+  <div class="recent-places-container" *ngIf="places && places.length > 0">
+    <h2 class="recent-posts-places-message">places</h2>
     <div class="places-container">
       <app-card
-        [path]="'/places/placeId'"
-        [title]="'Vitosha'"
-        [content]="
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'
-        "
-      ></app-card>
-      <app-card
-        [path]="'/places/placeId'"
-        [title]="'Happy restaurant '"
-        [content]="
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'
-        "
-      ></app-card>
-      <app-card
-        [path]="'/places/placeId'"
-        [title]="'Gabrovo Etura'"
-        [content]="
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'
-        "
+        *ngFor="let place of places"
+        [title]="place.title"
+        [content]="place.description"
+        [path]="'/places/details/' + place._id"
       ></app-card>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,7 @@ export class SearchComponent {
     searchInput: ['', [Validators.required]]
   })
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private searchService: SearchService) { }
 
 
   searchSubmitHandler(): void {
