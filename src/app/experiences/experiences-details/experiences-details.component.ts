@@ -12,6 +12,7 @@ import { SpinnerService } from '../../shared/spinner/spinner.service';
   styleUrl: './experiences-details.component.css'
 })
 export class ExperiencesDetailsComponent implements OnInit {
+  id: string = '';
   experience: Experience | undefined ;
   isOwner: boolean | undefined;
   ownerId: string | undefined;
@@ -20,12 +21,12 @@ export class ExperiencesDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private experienceService: ExperiencesService, private userService: UserService,private spinnerService: SpinnerService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['experienceId'];
-    this.experienceService.getById(id).subscribe({
-      next: (experience) => {
+    this.id = this.route.snapshot.params['experienceId'];
+    this.experienceService.getById(this.id).subscribe({
+      next: () => {
         this.spinnerService.show();
-        this.experience = experience;   
-        this.ownerId = experience.ownerId;   
+        this.experience = this.experienceService.experience; 
+        this.ownerId = this.experience!.ownerId;   
         this.isOwner = this.userService.isOwner(this.ownerId);
         this.spinnerService.hide();
       },
@@ -41,7 +42,22 @@ export class ExperiencesDetailsComponent implements OnInit {
     })
   }
 
-  onDeleteHandler() :void {
-    console.log('delete');
+  onDeleteHandler() : void {
+    this.experienceService.deleteById(this.id).subscribe({
+      next: () => {
+        this.spinnerService.show();
+        this.router.navigate(['/experiences']);
+        this.spinnerService.hide();
+      },
+      error: (err) => {
+        if(err.status === 0) {
+          this.toastr.error('Unable to connect to the server', 'Error');
+          return;
+        }
+        this.errors = [];
+        this.errors.push(err.error.message);
+        this.errors.forEach(error => this.toastr.error(error, 'Error')); 
+      }
+    })
   }
 }

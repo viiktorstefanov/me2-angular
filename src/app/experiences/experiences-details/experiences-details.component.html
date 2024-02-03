@@ -9,9 +9,8 @@
         <textarea class="description-info" readonly>{{experience.description}}</textarea>
       </div>
       <div class="owner-buttons" *ngIf="isOwner">
-        <a routerLink="/experiences/edit"><button class="submit-btn">Edit</button></a>
+        <a [routerLink]="'/experiences/edit/' + id"><button class="submit-btn">Edit</button></a>
         <button class="submit-btn" (click)="onDeleteHandler()">Delete</button>
       </div>
     </div>
   </div>
-  

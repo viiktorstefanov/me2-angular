@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ExperiencesService } from '../experiences.service';
+import { SpinnerService } from '../../shared/spinner/spinner.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-experiences-add',
@@ -13,13 +16,31 @@ export class ExperiencesAddComponent {
     person: ['', [Validators.required, Validators.minLength(3)] ],
     phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
     description: ['', [Validators.required, Validators.minLength(100)]],
-  })
+  });
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  errors: string[] | undefined;
+
+  constructor(private fb: FormBuilder, private router: Router, private experiencesService: ExperiencesService, private spinnerService: SpinnerService, private toastr: ToastrService) {}
 
   submitHandler() :void {
-    console.log(this.form.value);
-    this.router.navigate(['/places'])
+    this.experiencesService.createExperience(this.form.value.service!, this.form.value.person!, this.form.value.phoneNumber!, this.form.value.description!).subscribe({
+      next: () => {
+        this.spinnerService.show();
+        this.router.navigate(['/experiences']);
+        this.spinnerService.hide();
+      },
+      error: (err) => {
+        if(err.status === 0) {
+          this.toastr.error('Unable to connect to the server', 'Error');
+          return;
+        }
+        this.spinnerService.show();
+        this.errors = [];
+        this.errors.push(err.error.message);
+        this.spinnerService.hide();
+        this.errors.forEach(error =>  this.toastr.error(error, 'Error'));
+      }
+    })
   }
 
   get service() {

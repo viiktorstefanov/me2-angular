@@ -1,3 +1,4 @@
+<app-spinner></app-spinner>
 <div class="card">
   <div class="card-head">Add exp</div>
   <div class="card-body">
@@ -80,11 +81,9 @@
           </small>
         </mat-form-field>
       </div>
+      <div class="card-footer">
+        <button [disabled]="form.invalid" class="submit-btn">Submit</button>
+      </div>
     </form>
-    <div class="card-footer">
-      <button [disabled]="form.invalid" class="submit-btn">
-        <a [routerLink]="'/experiences'">Submit</a>
-      </button>
-    </div>
   </div>
 </div>

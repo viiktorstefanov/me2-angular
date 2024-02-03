@@ -14,7 +14,7 @@ export class ExperiencesListComponent implements OnInit {
   experiencesList: Experience[] | undefined;
   errors: string[] = [];
 
-  constructor(private experienceService: ExperiencesService, private spinnerService: SpinnerService, private toastr: ToastrService, private router: Router) {}
+  constructor(private experienceService: ExperiencesService, private spinnerService: SpinnerService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.experienceService.getAllExperiences().subscribe({
@@ -28,13 +28,10 @@ export class ExperiencesListComponent implements OnInit {
          this.toastr.error('Unable to connect to the server', 'Error');
          return;
         }
-
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 
       }
     })
   }
-
-  
 }

@@ -1,5 +1,6 @@
-<div class="card">
-  <div class="card-head">Edit exp</div>
+<app-spinner *ngIf="!experience"></app-spinner>
+<div class="card" *ngIf="experience">
+  <div class="card-head">Edit</div>
   <div class="card-body">
     <form class="edit-experience-form" [formGroup]="form" (ngSubmit)="submitHandler()">
       <div class="service-wrapper">
@@ -78,11 +79,9 @@
           </small>
         </mat-form-field>
       </div>
+      <div class="card-footer">
+        <button [disabled]="form.invalid" class="submit-btn">Save</button>
+      </div>
     </form>
-    <div class="card-footer">
-      <button [disabled]="form.invalid" class="submit-btn">
-        <a [routerLink]="'/experiences'">Save</a>
-      </button>
-    </div>
   </div>
 </div>

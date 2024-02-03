@@ -4,7 +4,7 @@ export type Experience = {
     phoneNumber?: string,
     description: string,
     ownerId?: string,
-    _id: string,
+    _id?: string,
     createdAt?: string,
     updatedAt?: string,
 }
