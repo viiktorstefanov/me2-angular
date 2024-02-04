@@ -12,8 +12,6 @@ export class HomeService {
   constructor(private http: HttpClient) { }
 
   getRecentExperiences(): Observable<Experience[]> {
-    console.log('aa');
-    
     return this.http.get<Experience[]>('/api/experiences/recent');
   };
 

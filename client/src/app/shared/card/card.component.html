@@ -1,6 +1,8 @@
     <div class="card">
         <div class="card-head"><a [routerLink]="path">{{title}}</a></div>
         <div class="card-body">
-            {{content}}
+            <div class="ellipsis-container">
+                <p class="ellipsis"> {{content}}</p>
+            </div>
         </div>
     </div>

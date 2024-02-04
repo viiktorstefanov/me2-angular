@@ -35,6 +35,10 @@ export class ExperiencesEditComponent {
   };
 
   submitHandler() : void {
+    if(this.form.invalid) {
+      this.toastr.error('All fields are required', 'Error');
+      return;
+   }
     this.experiencesService.editExperience(this.experience!._id!, this.form.value.service!, this.form.value.person!, this.form.value.phoneNumber!, this.form.value.description!).subscribe({
       next: () => {
         this.spinnerService.show();

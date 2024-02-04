@@ -21,4 +21,8 @@ export class SearchService {
   getRecentPlaces(): Observable<Place[]> {
     return this.http.get<Place[]>('/api/places/recent');
   };
+
+  getMatches(searchValue : string): Observable<any> {
+    return this.http.get<{ 'experiences': Experience[], 'places': Place[]}>(`/api/find?item=${searchValue}`);
+  }
 }

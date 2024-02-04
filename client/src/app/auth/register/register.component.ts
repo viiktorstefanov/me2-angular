@@ -30,8 +30,9 @@ export class RegisterComponent {
 
   submitHandler() :void {
     if(this.form.invalid) {
+      this.toastr.error('All fields are required', 'Error');
       return;
-    }
+   }
 
     const { firstName, lastName, email, password, phoneNumber } = this.form.value;
     
