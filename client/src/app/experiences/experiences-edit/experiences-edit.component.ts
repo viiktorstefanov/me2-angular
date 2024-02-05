@@ -5,6 +5,7 @@ import { ExperiencesService } from '../experiences.service';
 import { SpinnerService } from '../../shared/spinner/spinner.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-experiences-edit',
@@ -53,7 +54,7 @@ export class ExperiencesEditComponent {
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 
       }
-    });
+    }); 
   };
 
   get service() {

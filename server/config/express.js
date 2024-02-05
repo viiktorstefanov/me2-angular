@@ -12,5 +12,5 @@ module.exports = (app) => {
     app.use(session());
     
     //FOR THROATING FROM SERVER
-    // app.use(throating());   
+    app.use(throating());   
 }

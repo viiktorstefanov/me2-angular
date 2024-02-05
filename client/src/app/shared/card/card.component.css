@@ -54,15 +54,15 @@
 
   .ellipsis-container {
     position: relative;
-    max-height: calc(5 * 1.5em); /* Set maximum height for 5 lines */
-    overflow: hidden; /* Hide overflowing text */
+    max-height: calc(5 * 1.5em);
+    overflow: hidden; 
   }
   
   .ellipsis {
-    margin-right: -1em; /* Compensate for ellipsis */
-    padding-right: 1em; /* Ensure space for ellipsis */
-    white-space: pre-line; /* Preserve newline characters */
-    line-height: 1.5em; /* Set line height for proper line count */
+    margin-right: -1em; 
+    padding-right: 1em; 
+    white-space: pre-line; 
+    line-height: 1.5em; 
   }
   
   .ellipsis::after {
@@ -70,9 +70,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding-left: 1em; /* Spacing between text and ellipsis */
-    background-color: white; /* Match background color */
+    padding-left: 1em; 
+    background-color: white;
   }
-
-  
 }

@@ -46,11 +46,10 @@ export class ExperiencesDetailsComponent implements OnInit, OnDestroy {
   };
 
   onDeleteHandler() : void {
-    this.experienceService.deleteById(this.id).subscribe({
+    this.experienceService.deleteById(this.id).pipe(takeUntil(this.destroy$)).subscribe({
       next: () => {
         this.spinnerService.show();
         this.router.navigate(['/experiences']);
-        this.spinnerService.hide();
       },
       error: (err) => {
         if(err.status === 0) {
@@ -60,6 +59,9 @@ export class ExperiencesDetailsComponent implements OnInit, OnDestroy {
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 
+      },
+      complete: () => {
+        this.spinnerService.hide();
       }
     });
   };
