@@ -8,8 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ExperiencesModule } from './experiences/experiences.module';
-import { PlacesModule } from './places/places.module';
 import { ToastrModule } from 'ngx-toastr';
 
 import {MatDialogClose, MatDialogModule} from '@angular/material/dialog'; 
@@ -23,8 +21,6 @@ import { appInterceptorProvider } from './app.interceptor';
     AppComponent,
   ],
   imports: [
-    ExperiencesModule,
-    PlacesModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -7,9 +7,6 @@ import { ExperiencesEditComponent } from './experiences-edit/experiences-edit.co
 import { authGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'experiences',
-    children: [
         {
             path: '',
             pathMatch: 'full',
@@ -34,8 +31,6 @@ const routes: Routes = [
             canActivate: [authGuard],
             title: 'Details'
         },
-    ]
-  },
 ];
 
 @NgModule({

@@ -6,9 +6,6 @@ import { PlacesAddComponent } from './places-add/places-add.component';
 import { PlacesEditComponent } from './places-edit/places-edit.component';
 
 const routes: Routes = [
-  {
-    path: 'places',
-    children: [
         {
             path: '',
             pathMatch: 'full',
@@ -30,9 +27,6 @@ const routes: Routes = [
             component: PlacesDetailsComponent,
             title: 'Details'
         },
-        
-    ]
-  },
 ];
 
 @NgModule({
