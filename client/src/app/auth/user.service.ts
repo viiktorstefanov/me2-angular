@@ -33,7 +33,7 @@ export class UserService{
     if(storedUser) {    
       this.$$user.next(JSON.parse(storedUser));
     };
-
+    
      this.$$user.pipe(takeUntilDestroyed()).subscribe((user) => this.user = user); 
   };
 

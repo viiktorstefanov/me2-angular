@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
   form = this.fb.group({
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -23,10 +24,11 @@ export class RegisterComponent {
       ],
     ],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
+    phoneNumber: ['', [Validators.required, Validators.pattern(/^359[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}[ -]?\d{2}$/)]],
   });
 
   errors: string[] = [];
+  registerSubscription : Subscription | undefined;
 
   constructor(
     private ref: MatDialogRef<RegisterComponent>,
@@ -49,7 +51,7 @@ export class RegisterComponent {
     const { firstName, lastName, email, password, phoneNumber } =
       this.form.value;
 
-    this.userService
+    this.registerSubscription = this.userService
       .register(firstName!, lastName!, email!, password!, phoneNumber!)
       .subscribe({
         next: (user) => {
@@ -87,4 +89,10 @@ export class RegisterComponent {
   get password() {
     return this.form.controls['password'];
   };
+
+  ngOnDestroy() :void {
+    if(this.registerSubscription) {
+      this.registerSubscription.unsubscribe();
+    }
+  }
 }

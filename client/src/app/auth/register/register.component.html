@@ -108,7 +108,7 @@
     class="error"
   >
     <div *ngIf="phoneNumber.errors?.['required']">Phone number is required</div>
-    <div *ngIf="phoneNumber.errors?.['minlength']">Phone number must be at least 10 symbols</div>
+    <div *ngIf="phoneNumber.errors?.['pattern']">Phone number is invalid (+359)</div>
   </small>
     </div>
     <span class="sign-up-form-terms"

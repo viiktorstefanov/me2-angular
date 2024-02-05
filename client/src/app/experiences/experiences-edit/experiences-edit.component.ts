@@ -17,12 +17,11 @@ export class ExperiencesEditComponent {
   form = this.fb.group( {
     service: ['', [Validators.required, Validators.minLength(5)] ],
     person: ['', [Validators.required, Validators.minLength(3)] ],
-    phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
+    phoneNumber: ['', [Validators.required, Validators.pattern(/^359[ -]?\d{3}[ -]?\d{2}[ -]?\d{2}[ -]?\d{2}$/)]],
     description: ['', [Validators.required, Validators.minLength(100)]],
   });
 
   errors: string[] | undefined;
-
 
   constructor(private fb: FormBuilder, private experiencesService: ExperiencesService, private spinnerService: SpinnerService, private router: Router, private toastr: ToastrService) {}
 
@@ -38,7 +37,7 @@ export class ExperiencesEditComponent {
     if(this.form.invalid) {
       this.toastr.error('All fields are required', 'Error');
       return;
-   }
+   };
     this.experiencesService.editExperience(this.experience!._id!, this.form.value.service!, this.form.value.person!, this.form.value.phoneNumber!, this.form.value.description!).subscribe({
       next: () => {
         this.spinnerService.show();
@@ -49,27 +48,27 @@ export class ExperiencesEditComponent {
         if(err.status === 0) {
           this.toastr.error('Unable to connect to the server', 'Error');
           return;
-        }
+        };
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 
       }
     });
-  }
+  };
 
   get service() {
     return this.form.controls['service'];
-  }
+  };
 
   get person() {
     return this.form.controls['person'];
-  }
+  };
 
   get phoneNumber() {
     return this.form.controls['phoneNumber'];
-  }
+  };
 
   get description() {
     return this.form.controls['description'];
-  }
-}
+  };
+};

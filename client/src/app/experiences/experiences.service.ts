@@ -1,20 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Experience } from './types/experieces';
-import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExperiencesService implements OnDestroy{
+export class ExperiencesService{
   private $$experience = new BehaviorSubject<Experience | undefined>(undefined); 
-  private experience$ = this.$$experience.asObservable();
 
   experience: Experience | undefined;
-  subscription: Subscription;
 
   constructor(private http: HttpClient) {
-    this.subscription = this.experience$.subscribe((experience) => {
+    this.$$experience.pipe(takeUntilDestroyed()).subscribe((experience) => {
       this.experience = experience;
     });
    }
@@ -37,10 +36,5 @@ export class ExperiencesService implements OnDestroy{
 
   editExperience(id : string, service: string, person: string, phoneNumber: string, description: string) {
     return this.http.put(`/api/experiences/${id}`, { service, person, phoneNumber, description });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   };
-
-}
+};

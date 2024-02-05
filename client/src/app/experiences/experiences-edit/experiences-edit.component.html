@@ -55,8 +55,8 @@
         />
         <small *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="error">
           <div *ngIf="phoneNumber.errors?.['required']">Person's phone number is required</div>
-          <div *ngIf="phoneNumber.errors?.['minlength']">
-            Person's phone number should be at least 10 characters
+          <div *ngIf="phoneNumber.errors?.['pattern']">
+            Phone number is invalid (+359)
           </div>
         </small>
       </div>
