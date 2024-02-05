@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
-  styleUrl: './logout.component.css'
+  styleUrl: './logout.component.css',
 })
 export class LogoutComponent implements OnInit{
 
@@ -31,5 +31,5 @@ export class LogoutComponent implements OnInit{
         this.errors.forEach(error => this.toastr.error(error, 'Error'));   
       }
     });
-  }
+  };
 }

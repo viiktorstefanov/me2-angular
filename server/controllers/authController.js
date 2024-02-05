@@ -37,7 +37,7 @@ authController.post('/login', isGuest(), async (req, res) => {
         console.log(`User ${req.body.email} has logged in`);
     } catch (error) {
         const message = parseError(error);
-        res.status(403).json({ message }).end();
+        res.status(401).json({ message }).end();
     }
 });
 

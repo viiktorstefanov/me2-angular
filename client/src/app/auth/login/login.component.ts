@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
   form = this.fb.group({
@@ -46,14 +46,14 @@ export class LoginComponent {
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error'));   
       }
-    })
-  }
+    });
+  };
 
   get email() {
     return this.form.controls['email'];
-  }
+  };
 
   get password() {
     return this.form.controls['password'];
-  }
+  };
 }
