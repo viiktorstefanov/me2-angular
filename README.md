@@ -33,7 +33,6 @@
 4. [Getting Started](#getting-started)
    - [Installation](#installation)
 5. [Host](#host)
-6. [Structure of application](#structure) 
 
 
 ## Introduction <a name="introduction"></a>
@@ -149,7 +148,3 @@ npm start
 
 You can see it here: <a href="https://me2-angular-d82fe.web.app/home">Me2</a>
 
-## Structure <a name="structure"></a>
-<a>
-    <img src="./client/Structure.png" />
-</a>
