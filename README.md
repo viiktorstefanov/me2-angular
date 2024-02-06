@@ -1,4 +1,4 @@
-# <a align="center" href="https://me2-angular-d82fe.web.app/home"><img src="logo.png" /></a>
+# <a align="center" href="https://me2-angular-d82fe.web.app/home">Me2</a>
 
 <p align="left">
   <a>
