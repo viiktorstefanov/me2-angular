@@ -148,3 +148,5 @@ npm start
 
 You can see it here: <a href="https://me2-angular-d82fe.web.app/home">Me2</a>
 
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" sandbox="allow-scripts allow-popups allow-forms allow-modals allow-same-origin" width="800" height="450" src="https://boardmix.com/app/share/CAE.COz8DyABKhB75dXISflT5COxZHjacx9_MAZAAQ/xDiRXD?elementNodeGuid=1:34" allowfullscreen></iframe>
+
