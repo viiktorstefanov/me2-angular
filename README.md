@@ -74,7 +74,7 @@ The search functionality is designed to provide accurate and relevant results, e
 
 ## Places <a name="places"></a>
 
-The Places view serves as a directory of all the places shared by users within the community. Key features include:
+The Places view serves as a directory of all the places shared by users within the community.Places module is implemented with lazy loading. Key features include:
 
 - Listing of Shared Places: 
   - Visitors to the Places view can browse through a list of all the places shared by users, including their titles and brief descriptions.
@@ -90,13 +90,13 @@ When a user navigates to the detail view of a shared place, the following featur
 
 ## Experiences <a name="experiences"></a>
 
-The Experiences view offers visitors the opportunity to explore a wide range of shared experiences contributed by users.
+The Experiences view offers visitors the opportunity to explore a wide range of shared experiences contributed by users.Experiences module is implemented with lazy loading.
 
-Listing of Shared Experiences: Visitors can browse through a comprehensive list of experiences posted by members of the community.Each experience includes information about the service provider, such as: service title, service provider(specifies the person or entity providing the service), contact(the phone number of the service provider)and description(detailed overview of the experience being shared).
+- Listing of Shared Experiences: Visitors can browse through a comprehensive list of experiences posted by members of the community.Each experience includes information about the service provider, such as: service title, service provider(specifies the person or entity providing the service), contact(the phone number of the service provider)and description(detailed overview of the experience being shared).
 
-Accessing Detailed Information: Clicking on the title of an experience opens a detailed view, providing visitors with additional information about the experience.
+- Accessing Detailed Information: Clicking on the title of an experience opens a detailed view, providing visitors with additional information about the experience.
 
-Owner Privileges: If the visitor is the owner of the posted experience, they have special privileges to edit or delete the post directly from the detailed view.
+- Owner Privileges: If the visitor is the owner of the posted experience, they have special privileges to edit or delete the post directly from the detailed view.
 
 ## Contacts <a name="contacts"></a>
 
