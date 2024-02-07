@@ -52,7 +52,7 @@ Application is a platform designed for users to share and discover positive expe
 
 ## Features <a name="features"></a>
 
-### Homepage <a name="home"></a>
+## Homepage <a name="home"></a>
 
 The Home Page is designed to welcome visitors and immediately engage them with the core value of the application - sharing and discovering positive experiences and places. It features:
 
@@ -62,7 +62,7 @@ The Home Page is designed to welcome visitors and immediately engage them with t
 
 - Recent Places: Displays the latest three posts about places, interesting locations that users have enjoyed. Like experiences, this section is updated dynamically to reflect the most recent contributions.
 
-### Search <a name="search"></a>
+## Search <a name="search"></a>
 
 The Search Page empowers users to find specific experiences or places tailored to their preferences. Key features include:
 
@@ -72,7 +72,7 @@ The Search Page empowers users to find specific experiences or places tailored t
 
 The search functionality is designed to provide accurate and relevant results, enhancing the user's ability to find exactly what they're looking for.
 
-### Places <a name="places"></a>
+## Places <a name="places"></a>
 
 The Places view serves as a directory of all the places shared by users within the community. Key features include:
 
@@ -88,7 +88,7 @@ When a user navigates to the detail view of a shared place, the following featur
 - Owner Privileges: If the user is the owner of the shared place, they have special privileges to edit or delete the post.
 
 
-### Experiences <a name="experiences"></a>
+## Experiences <a name="experiences"></a>
 
 The Experiences view offers visitors the opportunity to explore a wide range of shared experiences contributed by users.
 
@@ -98,7 +98,7 @@ Accessing Detailed Information: Clicking on the title of an experience opens a d
 
 Owner Privileges: If the visitor is the owner of the posted experience, they have special privileges to edit or delete the post directly from the detailed view.
 
-### Contacts <a name="contacts"></a>
+## Contacts <a name="contacts"></a>
 
 Visitors can find information about our email address and social networks.
 
@@ -107,7 +107,7 @@ Email Link: Clicking on the email link directly opens an email form with our ema
 
 ## Getting Started <a name="getting-started"></a>
 
-### Installation <a name="installation"></a>
+## Installation <a name="installation"></a>
 
 clone repository
 ```
