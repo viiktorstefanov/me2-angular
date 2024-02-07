@@ -32,12 +32,8 @@
    - [Contacts](#contacts)
 4. [Getting Started](#getting-started)
    - [Installation](#installation)
-<<<<<<< HEAD
 5. [Structure](#structure) 
 6. [Host](#host)
-=======
-5. [Host](#host)
->>>>>>> 36d43ebd4532a4b953876a93459161e001caaeee
 
 
 ## Introduction <a name="introduction"></a>
