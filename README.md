@@ -107,7 +107,7 @@ Email Link: Clicking on the email link directly opens an email form with our ema
 
 ## Getting Started <a name="getting-started"></a>
 
-## Installation <a name="installation"></a>
+### Installation <a name="installation"></a>
 
 clone repository
 ```
