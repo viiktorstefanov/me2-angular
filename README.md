@@ -2,7 +2,7 @@
 
 <p align="left">
   <a>
-    <img src="./client/site-view.gif" />
+    <img src="site-view.gif" />
   </a>
 </p>
 
