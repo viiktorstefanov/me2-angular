@@ -1,4 +1,4 @@
 export const environment = {
-    apiUrl: 'http://localhost:5000', // domain -> will not be localhost in prod
+    apiUrl: 'https://me2-api.cyclic.app',
     USER_KEY: 'userData',
 };
