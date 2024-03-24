@@ -1,11 +1,23 @@
+<app-spinner></app-spinner>
 <h1>Places list</h1>
-<div class="places-container">
-    <app-card [title]="'I found best worker'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam sequi perferendis expedita qui illum iste. Magnam eos mollitia expedita tempora consequatur temporibus non sunt ratione delectus exercitationem quae quisquam incidunt excepturi odio rerum in iure cum, amet reprehenderit quibusdam consequuntur. Perferendis commodi suscipit quos nesciunt officiis, maiores expedita! At, similique!Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
-    <app-card [title]="'I was in restaurant Happy'" [content]="'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio asperiores incidunt inventore, eos ex perferendis quasi? Ratione error quae cupiditate autem. Voluptates eius maxime voluptas tenetur quidem ipsum, minus quaerat.'"></app-card>
+<div class="places-container" *ngIf="placesList && placesList.length > 0">
+  <app-card
+    *ngFor="let place of displayedPlaces"
+    [title]="place.title"
+    [content]="place.description"
+    [path]="'details/' + place._id"
+  ></app-card>
 </div>
-
+<p
+  *ngIf="displayedPlaces && displayedPlaces.length == 0"
+  class="places-container-message"
+>
+  No places have been added yet.
+</p>
+<mat-paginator
+  class="paginator-container"
+  [length]="placesList.length"
+  [pageSizeOptions]="[6, 12, 24, 36, 54]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
