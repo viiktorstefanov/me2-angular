@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExperiencesEditComponent } from './experiences-edit/experiences-edit.component';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -27,7 +27,8 @@ import { ExperiencesEditComponent } from './experiences-edit/experiences-edit.co
     MatFormFieldModule,
     MatInputModule,
     TextFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   exports: [
     ExperiencesListComponent,

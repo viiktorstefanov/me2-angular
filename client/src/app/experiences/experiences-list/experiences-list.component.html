@@ -1,7 +1,26 @@
-<app-spinner></app-spinner>
 <h1>Experience list</h1>
-<div class="experiences-container" *ngIf="experiencesList && experiencesList.length > 0">
-    <app-card *ngFor="let experience of experiencesList" [title]="experience.service" [content]="experience.description" [path]="'details/' + experience._id" ></app-card>
+<app-spinner></app-spinner>
+<div
+  class="experiences-container"
+  *ngIf="experiencesList && experiencesList.length > 0"
+>
+  <app-card
+    *ngFor="let experience of displayedExperiences"
+    [title]="experience.service"
+    [content]="experience.description"
+    [path]="'details/' + experience._id"
+  ></app-card>
 </div>
-<p *ngIf="experiencesList && experiencesList.length == 0" class="experiences-container-message">No experiences have been added yet.</p>
-
+<p
+  *ngIf="displayedExperiences && displayedExperiences.length == 0"
+  class="experiences-container-message"
+>
+  No experiences have been added yet.
+</p>
+<mat-paginator
+  class="paginator-container"
+  [length]="experiencesList.length"
+  [pageSizeOptions]="[6, 12, 24, 36, 54]"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>

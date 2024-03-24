@@ -4,7 +4,6 @@ import { ExperiencesService } from '../experiences.service';
 import { Experience } from '../types/experieces';
 import { UserService } from '../../auth/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { SpinnerService } from '../../shared/spinner/spinner.service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -21,17 +20,15 @@ export class ExperiencesDetailsComponent implements OnInit, OnDestroy {
   errors: string[] | undefined;
   destroy$ =  new Subject<void>();
 
-  constructor(private route: ActivatedRoute, private experienceService: ExperiencesService, private userService: UserService,private spinnerService: SpinnerService, private toastr: ToastrService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private experienceService: ExperiencesService, private userService: UserService, private toastr: ToastrService, private router: Router) { }
  
   ngOnInit() {
     this.id = this.route.snapshot.params['experienceId'];
     this.experienceService.getById(this.id).pipe(takeUntil(this.destroy$)).subscribe({
       next: () => {
-        this.spinnerService.show();
         this.experience = this.experienceService.experience; 
         this.ownerId = this.experience!.ownerId;   
         this.isOwner = this.userService.isOwner(this.ownerId);
-        this.spinnerService.hide();
       },
       error: (err) => {
         if(err.status === 0) {
@@ -48,7 +45,6 @@ export class ExperiencesDetailsComponent implements OnInit, OnDestroy {
   onDeleteHandler() : void {
     this.experienceService.deleteById(this.id).pipe(takeUntil(this.destroy$)).subscribe({
       next: () => {
-        this.spinnerService.show();
         this.router.navigate(['/experiences']);
       },
       error: (err) => {
@@ -59,9 +55,6 @@ export class ExperiencesDetailsComponent implements OnInit, OnDestroy {
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 
-      },
-      complete: () => {
-        this.spinnerService.hide();
       }
     });
   };

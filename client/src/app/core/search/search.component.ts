@@ -5,7 +5,7 @@ import { Experience } from '../../experiences/types/experieces';
 import { Place } from '../../places/types/place';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
-import { SpinnerService } from '../../shared/spinner/spinner.service';
+
 
 @Component({
   selector: 'app-search',
@@ -22,10 +22,14 @@ export class SearchComponent implements OnDestroy{
 
   errors: string[] | undefined;
   destroy$ = new Subject<void>();
+  isMatchesFound : boolean = false;
 
-  constructor(private fb: FormBuilder, private searchService: SearchService, private toastr: ToastrService, private spinnerService: SpinnerService) { }
+  constructor(private fb: FormBuilder, private searchService: SearchService, private toastr: ToastrService) { }
 
   searchSubmitHandler(): void {
+    this.experiences = undefined;
+    this.places = undefined;
+    
     if(this.form.invalid) {
       this.toastr.error('All fields are required', 'Error');
       return;
@@ -33,9 +37,13 @@ export class SearchComponent implements OnDestroy{
     const query = this.form.value.searchInput!.trim().toLocaleLowerCase();
     this.searchService.getMatches(query).pipe(takeUntil(this.destroy$)).subscribe({
       next: (matches) => {   
-        this.spinnerService.show() 
-        this.experiences = matches.experiences;  
-        this.places = matches.place;
+        if(matches.experiences.length > 0 || matches.places.length > 0) {
+          this.isMatchesFound = true;
+          this.experiences = matches.experiences;  
+          this.places = matches.places; 
+        } else{
+          this.toastr.error('No result found', 'Error')
+        }         
       },
       error: (err) => {
         if(err.status === 0) {
@@ -46,9 +54,6 @@ export class SearchComponent implements OnDestroy{
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error')); 
       },
-      complete: () => {
-        this.spinnerService.hide();
-      }
     });
   };
 

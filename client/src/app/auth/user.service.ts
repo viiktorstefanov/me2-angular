@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, takeUntil, tap } from 'rxjs';
 import { User } from './types/User';
 import { environment } from '../../environments/environment';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +11,9 @@ export class UserService{
   private $$user = new BehaviorSubject<User | undefined>(undefined); 
 
   user: User | undefined;
+  destroy$ = new Subject<void>();
 
-  USER_KEY = environment.USER_KEY;
+  readonly USER_KEY = environment.USER_KEY;
   
   get isLogged() : boolean {
     return !!this.user;
@@ -34,17 +34,15 @@ export class UserService{
       this.$$user.next(JSON.parse(storedUser));
     };
     
-     this.$$user.pipe(takeUntilDestroyed()).subscribe((user) => this.user = user); 
+     this.$$user.pipe(takeUntil(this.destroy$)).subscribe((user) => this.user = user); 
   };
 
   login(email: string, password: string) : Observable<any>{
     return this.http.post<User>('/api/users/login', { email, password });
-    //.pipe(tap((user) => this.$$user.next(user)))
   };
 
   register(firstName: string, lastName: string, email: string, password: string, phoneNumber: string) : Observable<any>{
     return this.http.post<User>('/api/users/register', { firstName, lastName, email, password, phoneNumber });
-    //.pipe(tap((user) => this.$$user.next(user)))
   };
 
   logout() {
@@ -60,4 +58,9 @@ export class UserService{
   clearUser() {
     sessionStorage.removeItem(this.USER_KEY);
   };
+
+  ngOnDestroy():void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

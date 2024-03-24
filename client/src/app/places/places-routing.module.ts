@@ -4,6 +4,8 @@ import { PlacesListComponent } from './places-list/places-list.component';
 import { PlacesDetailsComponent } from './places-details/places-details.component';
 import { PlacesAddComponent } from './places-add/places-add.component';
 import { PlacesEditComponent } from './places-edit/places-edit.component';
+import { authGuard } from '../guards/auth.guard';
+import { ownerGuard } from '../guards/owner.guard';
 
 const routes: Routes = [
         {
@@ -15,16 +17,19 @@ const routes: Routes = [
         {
           path: 'add',
           component: PlacesAddComponent,
+          canActivate: [authGuard],
           title: 'Add'
         },
         {
-          path: 'edit',
+          path: 'edit/:placeId',
           component: PlacesEditComponent,
+          canActivate: [authGuard, ownerGuard],
           title: 'Edit'
         },
         {
-            path: ':placeId',
+            path: 'details/:placeId',
             component: PlacesDetailsComponent,
+            canActivate: [authGuard],
             title: 'Details'
         },
 ];

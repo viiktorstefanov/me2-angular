@@ -19,7 +19,7 @@
 </div>
 
 <app-spinner></app-spinner>
-<div class="search-container" *ngIf="experiences || places">
+<div class="search-container" *ngIf="isMatchesFound">
   <ng-container *ngIf="experiences">
     <app-card
       *ngFor="let experience of experiences"
@@ -32,6 +32,9 @@
   <ng-container *ngIf="places">
     <app-card
     *ngFor="let place of places"
+    [title]="place.title"
+    [content]="place.description"
+    [path]="'/places/details/' + place._id"
   >
   </app-card>
   </ng-container>

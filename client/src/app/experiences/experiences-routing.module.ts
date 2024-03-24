@@ -5,6 +5,7 @@ import { ExperiencesListComponent } from './experiences-list/experiences-list.co
 import { ExperiencesAddComponent } from './experiences-add/experiences-add.component';
 import { ExperiencesEditComponent } from './experiences-edit/experiences-edit.component';
 import { authGuard } from '../guards/auth.guard';
+import { ownerGuard } from '../guards/owner.guard';
 
 const routes: Routes = [
         {
@@ -22,7 +23,7 @@ const routes: Routes = [
         {
           path: 'edit/:experienceId',
           component: ExperiencesEditComponent,
-          canActivate: [authGuard],
+          canActivate: [authGuard, ownerGuard],
           title: 'Edit'
         },
         {

@@ -56,6 +56,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 50%;
 }
 
 .experiences-container-wrapper, .places-container-wrapper{
@@ -63,4 +64,14 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
+}
+
+.missing-message{
+    display: flex;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    font-size: 1rem;
+    line-height: 2.4;
+    font-family: 'Helvetica', sans-serif;
+    color: #495057;
 }

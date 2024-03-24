@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ExperiencesService } from '../experiences.service';
-import { SpinnerService } from '../../shared/spinner/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -22,7 +21,7 @@ export class ExperiencesAddComponent implements OnDestroy {
   errors: string[] | undefined;
   destroy$ = new Subject<void>();
 
-  constructor(private fb: FormBuilder, private router: Router, private experiencesService: ExperiencesService, private spinnerService: SpinnerService, private toastr: ToastrService) {}
+  constructor(private fb: FormBuilder, private router: Router, private experiencesService: ExperiencesService, private toastr: ToastrService) {}
 
   submitHandler() :void {
     if(this.form.invalid) {
@@ -31,19 +30,15 @@ export class ExperiencesAddComponent implements OnDestroy {
    }
     this.experiencesService.createExperience(this.form.value.service!, this.form.value.person!, this.form.value.phoneNumber!, this.form.value.description!).pipe(takeUntil(this.destroy$)).subscribe({
       next: () => {
-        this.spinnerService.show();
         this.router.navigate(['/experiences']);
-        this.spinnerService.hide();
       },
       error: (err) => {
         if(err.status === 0) {
           this.toastr.error('Unable to connect to the server', 'Error');
           return;
         };
-        this.spinnerService.show();
         this.errors = [];
         this.errors.push(err.error.message);
-        this.spinnerService.hide();
         this.errors.forEach(error =>  this.toastr.error(error, 'Error'));
       }
     });

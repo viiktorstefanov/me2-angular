@@ -5,4 +5,6 @@ export type Place = {
     description: string,
     _id?: string,
     ownerId?: string,
+    createdAt?: string,
+    updatedAt?: string,
 }

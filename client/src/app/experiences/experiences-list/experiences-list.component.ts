@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ExperiencesService } from '../experiences.service';
 import { Experience } from '../types/experieces';
-import { SpinnerService } from '../../shared/spinner/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-experiences-list',
@@ -11,18 +11,21 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './experiences-list.component.css'
 })
 export class ExperiencesListComponent implements OnInit, OnDestroy {
-  experiencesList: Experience[] | undefined;
+  experiencesList: Experience[] = [];
+  displayedExperiences: Experience[] | undefined;
   errors: string[] = [];
   private destroy$ = new Subject<void>();
 
-  constructor(private experienceService: ExperiencesService, private spinnerService: SpinnerService, private toastr: ToastrService) {}
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private experienceService: ExperiencesService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.experienceService.getAllExperiences().pipe(takeUntil(this.destroy$)).subscribe({
       next: (experiences) => {
-        this.spinnerService.show(); 
         this.experiencesList = experiences;
-        this.spinnerService.hide();
+        this.paginator.length = this.experiencesList.length;
+        this.updateDisplayedExperiences();
       },
       error: (err) => {
         if(err.status === 0) {
@@ -40,4 +43,14 @@ export class ExperiencesListComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   };
+
+  onPageChange(event: PageEvent) {
+    this.updateDisplayedExperiences();
+  };
+
+  private updateDisplayedExperiences() {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    this.displayedExperiences = this.experiencesList?.slice(startIndex, endIndex);
+  }
 };

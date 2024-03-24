@@ -1,6 +1,7 @@
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navBarData } from './nav-data';
 import { sideBarNav } from '../types/sideBarNav';
+import { footerData } from './footer-data';
 
 @Component({
   selector: 'app-side-nav',
@@ -14,6 +15,8 @@ export class SideNavComponent implements OnInit{
   collapsed = false;
   screenWidth = 0;
   navData = navBarData;
+  footerData = footerData;
+  currentYear: number = new Date().getFullYear();
 
   @HostListener('window:resize', ['$event'])
   onResize(event : Event) {

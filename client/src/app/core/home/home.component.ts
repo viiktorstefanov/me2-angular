@@ -4,7 +4,6 @@ import { Experience } from '../../experiences/types/experieces';
 import { Place } from '../../places/types/place';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
-import { SpinnerService } from '../../shared/spinner/spinner.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   errors: string[] | undefined;
   destroy$ = new Subject<void>();
 
-  constructor(private homeService: HomeService, private toastr: ToastrService, private spinnerService: SpinnerService) {}
+  constructor(private homeService: HomeService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.homeService.getRecentExperiences().pipe(takeUntil(this.destroy$)).subscribe({
@@ -38,7 +37,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.homeService.getRecentPlaces().subscribe({
       next: (places) => {
-        this.spinnerService.show();
         this.places = places;
       },
       error: (err) => {
@@ -49,8 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.errors = [];
         this.errors.push(err.error.message);
         this.errors.forEach(error => this.toastr.error(error, 'Error'));   
-      },
-      complete: () => this.spinnerService.hide()
+      }
     });
   };
 
