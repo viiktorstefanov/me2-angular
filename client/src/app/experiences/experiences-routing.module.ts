@@ -12,25 +12,25 @@ const routes: Routes = [
             path: '',
             pathMatch: 'full',
             component: ExperiencesListComponent,
-            title: 'Experiences'
+            title: 'Me2: Experiences'
         },
         {
           path: 'add',
           component: ExperiencesAddComponent,
           canActivate: [authGuard],
-          title: 'Add'
+          title: 'Me2: Add'
         },
         {
           path: 'edit/:experienceId',
           component: ExperiencesEditComponent,
           canActivate: [authGuard, ownerGuard],
-          title: 'Edit'
+          title: 'Me2: Edit'
         },
         {
             path: 'details/:experienceId',
             component: ExperiencesDetailsComponent,
             canActivate: [authGuard],
-            title: 'Details'
+            title: 'Me2: Details'
         },
 ];
 

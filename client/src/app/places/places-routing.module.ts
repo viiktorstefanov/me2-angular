@@ -12,25 +12,25 @@ const routes: Routes = [
             path: '',
             pathMatch: 'full',
             component: PlacesListComponent,
-            title: 'Places'
+            title: 'Me2: Places'
         },
         {
           path: 'add',
           component: PlacesAddComponent,
           canActivate: [authGuard],
-          title: 'Add'
+          title: 'Me2: Add'
         },
         {
           path: 'edit/:placeId',
           component: PlacesEditComponent,
           canActivate: [authGuard, ownerGuard],
-          title: 'Edit'
+          title: 'Me2: Edit'
         },
         {
             path: 'details/:placeId',
             component: PlacesDetailsComponent,
             canActivate: [authGuard],
-            title: 'Details'
+            title: 'Me2: Details'
         },
 ];
 

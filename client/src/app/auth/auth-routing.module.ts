@@ -8,7 +8,7 @@ const routes: Routes = [
             path: 'logout',
             component: LogoutComponent,
             canActivate: [authGuard],
-            title: 'Logout',
+            title: 'Me2: Logout',
           }
 ];
 

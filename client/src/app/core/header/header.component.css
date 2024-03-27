@@ -5,7 +5,6 @@
     transition: all .5s ease;
     background: #f4f7fa;
     padding: 1rem 1.5rem 0 1.5rem;
-    /* position: fixed; */
     top: 0;
 
     .head-content{
@@ -46,12 +45,10 @@
                         margin-left: 5px;
                         outline: 0;
                         color: #495057;
-                        /* color: #263238; */
                     }
 
                     .head-menu-item-btn:hover,
                     .head-menu-item-btn:focus {
-                        /* background: #eff2f3; */
                         .menu-icon {
                             color: #699dfa;
                         }

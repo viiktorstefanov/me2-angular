@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    title: 'Home'
+    title: 'Me2: Home'
   },
   {
     path: 'auth',
@@ -31,17 +31,17 @@ const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsComponent,
-    title: 'Contacts'
+    title: 'Me2: Contacts'
   },
   {
     path: 'search',
     component: SearchComponent,
-    title: 'Search'
+    title: 'Me2: Search'
   },
   {
     path: 'not-found',
     component: NotFound404Component,
-    title: '404',
+    title: 'Error',
   },
   {
     path: '**',
