@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
 import { EMPTY, Observable, catchError, finalize, tap, throwError } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.development';
 import { UserService } from './auth/user.service';
 import { User } from './auth/types/User';
 import { Router } from '@angular/router';
